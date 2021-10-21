@@ -1,3 +1,3 @@
 all:
-	@echo Hello World at \$(date)
-	@echo mvn --version
+	@echo Hello World at `date`
+	@mvn --version
