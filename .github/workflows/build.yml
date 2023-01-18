@@ -11,7 +11,4 @@ jobs:
           path: '~/.m2/repository'
           key: maven-deps-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('pom.xml') }}
 
-      - run: find ~/.m2/repository
-
-# TBD
-#      - run: make populate-m2-cache
+      - run: make populate-m2-cache
