@@ -1,4 +1,4 @@
-name: test-it
+name: populate-cache
 on:
 #  schedule:
 #    - cron '0 17 * * *'
