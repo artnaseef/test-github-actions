@@ -1,8 +1,14 @@
 name: test-it
 on: [push]
 jobs:
-  say-hello:
+  use-m2-cache:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: make
+
+      - uses: actions/cache/restore@v3
+        with:
+          path: '~/.m2/repository'
+          key: maven-deps-${{ runner.os }}-${{ runner.arch }}
+
+      - run: make populate-m2-cache
