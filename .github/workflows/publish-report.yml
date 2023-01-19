@@ -16,6 +16,10 @@ jobs:
         with:
           html_file: 'example/cucumber.html'
 
+      - name: REPORT Preview URL
+        run:
+          echo PREVIEW RERPORT URL: ${{steps.html_preview.outputs.url}}
+
       - name: Upload report
         uses: actions/upload-artifact@v3
         with:
