@@ -8,7 +8,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Show contents
-        run|
+        run: |
             find . -type f -ls
 
       - name: Generate Preview
@@ -17,7 +17,7 @@ jobs:
           html_file: 'example/cucumber.html'
 
       - name: REPORT Preview URL
-        run|
+        run: |
             echo "PREVIEW RERPORT URL: ${{steps.html_preview.outputs.url}}"
 
       - name: Upload report
