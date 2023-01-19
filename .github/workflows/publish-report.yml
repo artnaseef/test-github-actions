@@ -8,5 +8,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: cucumber-report
-          path: example/
+          path: example/cucumber.*
 
