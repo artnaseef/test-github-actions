@@ -4,6 +4,11 @@ jobs:
   publish-example-cucumber-report:
     runs-on: ubuntu-latest
     steps:
+      - name: SIMULATE A BUILD
+        run: |
+            mkdir target
+            cp example/* target/
+
       - name: Check out repository code
         uses: actions/checkout@v3
 
@@ -15,7 +20,7 @@ jobs:
         uses: pavi2410/html-preview-action@v2
         id: html_preview
         with:
-          html_file: 'example/cucumber.html'
+          html_file: 'target/cucumber.html'
 
       - name: REPORT Preview URL
         run: |
@@ -25,5 +30,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: cucumber-report
-          path: example/cucumber.html
+          path: target/cucumber.html
 
