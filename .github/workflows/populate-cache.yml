@@ -2,8 +2,8 @@ name: test-it
 on:
 #  schedule:
 #    - cron '0 17 * * *'
-  label:
-    types: [created]
+  pull_request:
+    types: [labeled]
 jobs:
   populate-m2-cache:
     runs-on: ubuntu-latest
