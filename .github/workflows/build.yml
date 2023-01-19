@@ -1,7 +1,7 @@
 name: test-it
 on: [push]
 jobs:
-  populate-m2-cache:
+  use-m2-cache:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
