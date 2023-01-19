@@ -16,6 +16,13 @@ jobs:
         run: |
             find . -type f -ls
 
+      - name: CUCUMBER Annotations Action
+        uses: deblockt/cucumber-report-annotations-action@v1.7
+        with:
+          access-token: ${{ secrets.GITHUB_TOKEN }}
+          path: "**/cucumber-report.json"
+
+      # DOES NOT APPEAR TO WORK FOR BUILD OUTPUT FILES
       - name: Generate Preview
         uses: pavi2410/html-preview-action@v2
         id: html_preview
