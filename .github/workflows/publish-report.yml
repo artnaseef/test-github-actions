@@ -11,7 +11,7 @@ jobs:
         run:
             find . -type f -ls
 
-      - name Generate Preview
+      - name: Generate Preview
         uses: pavi2410/html-preview-action@v2
         with:
           html_file: 'example/cucumber.html'
