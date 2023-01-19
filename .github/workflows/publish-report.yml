@@ -4,9 +4,13 @@ jobs:
   publish-example-cucumber-report:
     runs-on: ubuntu-latest
     steps:
+      - name: Show contents
+        run:
+            find . -type f -ls
+
       - name: Upload report
         uses: actions/upload-artifact@v3
         with:
           name: cucumber-report
-          path: example/cucumber.*
+          path: example/cucumber.html
 
