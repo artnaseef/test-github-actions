@@ -1,14 +1,17 @@
 name: test-it
-on: [push]
+on:
+  # Using 5 PM (UTC) for testing, since that's soon...
+  schedule:
+    - cron '0 17 * * *'
 jobs:
   populate-m2-cache:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
 
-      - uses: actions/cache/restore@v3
+      - run: make populate-m2-cache
+
+      - uses: actions/cache/save@v3
         with:
           path: '~/.m2/repository'
           key: maven-deps-${{ runner.os }}-${{ runner.arch }}
-
-      - run: make populate-m2-cache
