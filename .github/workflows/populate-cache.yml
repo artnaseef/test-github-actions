@@ -1,8 +1,9 @@
 name: test-it
 on:
-  # Using 5 PM (UTC) for testing, since that's soon...
-  schedule:
-    - cron '0 17 * * *'
+#  schedule:
+#    - cron '0 17 * * *'
+  label:
+    types: [created]
 jobs:
   populate-m2-cache:
     runs-on: ubuntu-latest
