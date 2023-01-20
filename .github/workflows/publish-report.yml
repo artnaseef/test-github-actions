@@ -1,5 +1,5 @@
 name: publish-reports
-on: [push]
+on: [push, pull_request]
 jobs:
   publish-example-cucumber-report:
     runs-on: ubuntu-latest
