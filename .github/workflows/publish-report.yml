@@ -47,21 +47,27 @@ jobs:
           mkdir stage
           cp target/cucumber.* stage/
 
-      - name: Publish Github Pages
-        uses: peaceiris/actions-gh-pages@v3.8.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: stage
-          keep_files: true 
+#      - name: Publish Github Pages
+#        uses: peaceiris/actions-gh-pages@v3.8.0
+#        with:
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          publish_branch: gh-pages
+#          publish_dir: stage
+#          keep_files: true 
 
-      - name: Post the link to the report
-        if: always()
-        uses: Sibz/github-status-action@v1
-        with: 
-            authToken: ${{secrets.GITHUB_TOKEN}}
-            context: 'Test report'
-            state: 'success'
-            sha: ${{ github.event.pull_request.head.sha }}
-            target_url: artnaseef/test-github-actions/${{ github.run_number }}
+      - name: Publish Github Pages
+        uses: PavanMudigonda/html-reporter-github-pages/composite@v1.1
+        with:
+          test_results: stage
+          keep_reports: 20 
+
+#      - name: Post the link to the report
+#        if: always()
+#        uses: Sibz/github-status-action@v1
+#        with: 
+#            authToken: ${{secrets.GITHUB_TOKEN}}
+#            context: 'Test report'
+#            state: 'success'
+#            sha: ${{ github.event.pull_request.head.sha }}
+#            target_url: artnaseef/test-github-actions/${{ github.run_number }}
 
