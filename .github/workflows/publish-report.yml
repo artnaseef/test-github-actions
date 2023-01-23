@@ -39,3 +39,29 @@ jobs:
           name: cucumber-report
           path: target/cucumber.html
 
+###
+### GH PAGES
+###
+      - name: Stage report for GH Pages
+        run: |
+          mkdir /stage
+          cp target/cucumber.* /stage/
+
+      - name: Publish Github Pages
+        uses: peaceiris/actions-gh-pages@v3.8.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: stage
+          keep_files: true 
+
+      - name: Post the link to the report
+        if: always()
+        uses: Sibz/github-status-action@v1
+        with: 
+            authToken: ${{secrets.GITHUB_TOKEN}}
+            context: 'Test report'
+            state: 'success'
+            sha: ${{ github.event.pull_request.head.sha }}
+            target_url: PavanMudigonda.github.io/html-reporter-github-pages/${{ github.run_number }}
+
